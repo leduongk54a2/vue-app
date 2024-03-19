@@ -4,10 +4,11 @@
 
 <script setup>
 import { ref } from "vue";
+
 const count = ref(0);
 
 function clickIncrement() {
   count.value++;
 }
 </script>
-<style lang="css" src="./index.css"></style>
+<style lang="css" scoped src="./index.css"></style>

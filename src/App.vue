@@ -1,17 +1,11 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <MyComponent />
+  <router-view />
 </template>
 
 <script>
-import MyComponent from './components/MyComponent/MyComponent.vue'
-
 export default {
-  name: 'App',
-  components: {
-    MyComponent
-  }
-}
+  name: "App",
+};
 </script>
 
 <style>
