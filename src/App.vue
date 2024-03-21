@@ -1,20 +1,21 @@
 <template>
-  <router-view />
+  <layout>
+    <router-view />
+  </layout>
 </template>
 
-<script>
-export default {
-  name: "App",
-};
+<script setup>
+import Layout from "./components/Layout/Layout.vue";
 </script>
 
-<style>
+<style lang="less">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  width: 100vw;
+  height: 100vh;
 }
 </style>
