@@ -1,0 +1,2 @@
+export const SET_LOADING = "SET_LOADING";
+export const SET_LIST_CATEGORY = "SET_LIST_CATEGORY";

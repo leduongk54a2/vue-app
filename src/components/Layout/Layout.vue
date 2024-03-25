@@ -3,7 +3,6 @@ import { ref } from "vue";
 import HeaderLayout from "./Header.vue";
 import Sider from "./Sider.vue";
 
-const selectedKeys = ref(["1"]);
 const collapsed = ref(false);
 const collapseSider = () => {
   collapsed.value = !collapsed.value;
@@ -12,9 +11,12 @@ const collapseSider = () => {
 
 <template>
   <a-layout>
-    <sider :collapsed="collapsed" :selected-keys="selectedKeys" />
+    <sider v-model:collapsed="collapsed" />
     <a-layout>
-      <header-layout :collapsed="collapsed" @collapse-sider="collapseSider" />
+      <header-layout
+        v-model:collapsed="collapsed"
+        @collapse-sider="collapseSider"
+      />
       <a-layout-content
         :style="{
           margin: '24px 16px',
