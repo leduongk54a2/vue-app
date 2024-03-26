@@ -27,7 +27,6 @@ const httpServices = {
         params,
       })
       .then((res) => {
-        alert(JSON.stringify(res));
         return res.data;
       })
       .catch((err) => {

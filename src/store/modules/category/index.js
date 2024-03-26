@@ -21,7 +21,6 @@ export const actions = {
   },
 };
 
-/* eslint no-param-reassign: ["error", { "props": false }] */
 export const mutations = {
   [SET_LOADING](state, loading) {
     state.loading = loading;

@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@ant-design/icons-vue": "^7.0.1",
+    "@vue/babel-plugin-jsx": "^1.2.2",
     "@vue/cli": "^5.0.8",
     "ant-design-vue": "^4.1.2",
     "axios": "^1.6.8",
@@ -45,7 +46,8 @@
     },
     "rules": {
       "vue/multi-word-component-names": 0,
-      "no-debugger": "off"
+      "no-debugger": "off",
+      "no-unused-vars": "off"
     }
   },
   "browserslist": [
