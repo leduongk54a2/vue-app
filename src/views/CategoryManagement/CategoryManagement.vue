@@ -2,7 +2,7 @@
 import { useStore } from "vuex";
 import { computed, h, onMounted, ref, watch } from "vue";
 import { Button, Checkbox } from "ant-design-vue";
-import { GET_ALL_CATEGORY } from "@/store/modules/category/actions-type";
+import { DELETE_CATEGORY, GET_ALL_CATEGORY } from "@/store/modules/category/actions-type";
 import { LoadingOutlined } from "@ant-design/icons-vue";
 import AddCategoryModal from "@/views/CategoryManagement/AddCategoryModal.vue";
 
@@ -10,7 +10,7 @@ const columns = [
   {
     width: "3%",
     title: "ID",
-    customRender: ({ record }) => <div>{record.categoryName}</div>,
+    customRender: ({ record }) => <div>{record.categoryId}</div>,
   },
   {
     width: "10%",
@@ -31,7 +31,7 @@ const columns = [
   {
     width: "10%",
     title: "Ẩn",
-    customRender: (record) => {
+    customRender: ({record}) => {
       return <Checkbox checked={!record.visible} />;
     },
     shouldCellUpdate: () => {
@@ -48,8 +48,8 @@ const columns = [
   {
     width: "10%",
     title: "Xóa",
-    customRender: () => {
-      return <Button>Xóa</Button>;
+    customRender: ({record}) => {
+      return <Button onClick={()=>deleteCategory([record.categoryId])}>Xóa</Button>;
     },
   },
 ];
@@ -68,6 +68,14 @@ const loading = computed(() => store.getters.loading);
 watch(visibleAdd, () => {
   console.log(visibleAdd.value);
 });
+
+const deleteCategory = (ids) => {
+  store.dispatch(DELETE_CATEGORY,ids).then((res) => {
+    if(res.statusCode === 200 ) {
+      store.dispatch(GET_ALL_CATEGORY);
+    }
+  })
+}
 </script>
 
 <template>
@@ -77,14 +85,7 @@ watch(visibleAdd, () => {
         >Thêm
       </a-button>
       <a-table :columns="columns" :data-source="listCategory"></a-table>
-      <add-category-modal
-        v-modal:visible="visibleAdd"
-        @set-visible="
-          (value) => {
-            visibleAdd = value;
-          }
-        "
-      />
+      <add-category-modal v-model:visible="visibleAdd"/>
     </a-spin>
   </div>
 </template>
